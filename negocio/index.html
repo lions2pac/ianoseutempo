@@ -227,6 +227,23 @@ footer a{color:var(--ink)}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
 @media (prefers-reduced-motion:reduce){.rv,.msg{opacity:1;transform:none;transition:none}.typing i{animation:none}}
 @media (pointer:coarse){.btn{min-height:52px;display:inline-flex;align-items:center;justify-content:center}}
+
+.hero-img{justify-self:center;width:min(380px,100%);border-radius:28px;overflow:hidden;box-shadow:0 30px 80px -20px #000c;border:1px solid var(--line)}
+.hero-img img{width:100%;height:auto}
+.pain{display:grid;gap:36px;align-items:center}
+@media (min-width:900px){.pain{grid-template-columns:.9fr 1.1fr}}
+.pain img,.shift img,.box-img{width:100%;max-width:420px;justify-self:center;border-radius:24px;box-shadow:0 24px 60px -24px #0009}
+.pains{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px}
+.pains li{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;font-weight:600}
+.pains li b{color:var(--coral-ink);font-size:20px;line-height:1.3}
+.shift{display:grid;gap:36px;align-items:center}
+@media (min-width:900px){.shift{grid-template-columns:1.1fr .9fr}}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.ba div{border-radius:16px;padding:16px;font-size:15px;font-weight:600;line-height:1.45}
+.ba .b{background:#16161c0d;border:1px solid #16161c1a}
+.ba .a{background:#2dd4bf22;border:1px solid #2dd4bf66}
+.ba h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.payback{margin-top:18px;background:#ffd43b1f;border:1px solid #ffd43b66;border-radius:14px;padding:14px 16px;font-weight:700;font-size:15px}
 </style>
 
 <!-- Meta Pixel: IA NO SEU TEMPO -->
@@ -268,24 +285,48 @@ fbq('track','ViewContent',{content_name:'IA para o seu Negocio',content_ids:['88
     </div>
 
     <div class="rv d2">
-      <div class="phone" aria-label="Exemplo de conversa com a IA">
-        <div class="screen" id="chat">
-          <div class="screen-head"><span class="avatar" aria-hidden="true">IA</span><div><b>ChatGPT</b><small>exemplo de atendimento</small></div></div>
-          <div class="msg me">Uma cliente perguntou se o bolo de chocolate tem pra hoje e quanto custa. Responde simpático: R$ 60, retira às 17h, aceito pix.</div>
-          <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="msg ai">Oi! Tem sim 😊 O bolo de chocolate sai por R$ 60 e fica pronto pra retirar hoje às 17h. Aceitamos pix. Quer que eu separe um pra você?</div>
-          <div class="msg me">Agora faz um post pro Instagram desse bolo.</div>
-          <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="msg ai">Chocolate de verdade, cobertura cremosa e feito hoje 🍫 Encomende pelo WhatsApp e retire às 17h. Corre que é por encomenda!</div>
-        </div>
-      </div>
-      <p class="phone-cap">Atendimento e post em menos de 1 minuto.</p>
+      <div class="hero-img"><img src="img/c4.webp" width="752" height="1344" alt="Dona de confeitaria comemorando uma venda aprovada no celular"></div>
     </div>
   </div>
 </section>
 
+
+<!-- DOR -->
+<section class="sec" id="dor">
+  <div class="wrap pain">
+    <img class="rv" src="img/c5.webp" width="752" height="1344" alt="Dona de loja tentando fazer tudo ao mesmo tempo" loading="lazy">
+    <div>
+      <p class="kicker rv">Isso acontece no seu negócio?</p>
+      <h2 class="rv d1" style="margin-top:14px">Você faz o trabalho de <span class="serif c-coral">4 pessoas.</span></h2>
+      <ul class="pains">
+        <li class="rv"><b>✕</b>O cliente pergunta o preço, você demora pra responder e ele compra no concorrente.</li>
+        <li class="rv d1"><b>✕</b>Você sabe que precisa postar todo dia, mas não tem tempo nem ideia do que postar.</li>
+        <li class="rv d2"><b>✕</b>No fim do mês não sabe direito quanto vendeu nem quanto sobrou.</li>
+        <li class="rv d3"><b>✕</b>Cobra o preço no chute e, às vezes, trabalha quase de graça.</li>
+      </ul>
+      <p class="lede rv" style="margin-top:24px">A culpa não é sua. Ninguém dá conta de atender, postar, vender e fazer as contas sozinho.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIRADA -->
+<section class="sec paper" id="virada">
+  <div class="wrap shift">
+    <div>
+      <p class="kicker rv">A boa notícia</p>
+      <h2 class="rv d1" style="margin-top:14px">A IA grátis do seu celular vira <span class="serif c-coral">seu assistente</span></h2>
+      <p class="rv d2" style="margin-top:18px;color:var(--paper-muted)">O ChatGPT e o Gemini já fazem esse trabalho em segundos. Falta só alguém te mostrar como pedir, passo a passo, para o seu tipo de negócio.</p>
+      <div class="ba rv d3">
+        <div class="b"><h3>Antes</h3>Responder um por um<br>Post só quando sobra tempo<br>Preço no chute<br>Vendas no caderno</div>
+        <div class="a"><h3>Depois</h3>Respostas prontas em 1 toque<br>Posts da semana em minutos<br>Preço calculado<br>Planilha de vendas</div>
+      </div>
+    </div>
+    <img class="rv" src="img/c6.webp" width="752" height="1344" alt="Assistente de IA ajudando a dona da loja" loading="lazy">
+  </div>
+</section>
+
 <!-- 3 COISAS -->
-<section class="sec paper" id="coisas">
+<section class="sec" id="coisas">
   <div class="wrap">
     <div class="tabs-head">
       <p class="kicker rv">Já na primeira semana</p>
@@ -389,10 +430,12 @@ fbq('track','ViewContent',{content_name:'IA para o seu Negocio',content_ids:['88
 <!-- OFERTA -->
 <section class="sec" id="comprar">
   <div class="wrap offer">
+    <img class="box-img rv" src="img/c3.webp" width="752" height="1344" alt="Curso IA para o seu Negócio" loading="lazy" style="max-width:340px">
     <div class="ticket rv">
       <p class="name">CURSO ONLINE<span class="serif">IA para o seu Negócio</span></p>
       <div class="big-price"><b>R$ 67,00</b></div>
-      <p class="inst">ou 12x de R$&nbsp;6,93 no cartão.</p>
+      <p class="inst">ou 12x de R$&nbsp;6,93 no cartão. Pagamento único, sem mensalidade.</p>
+      <p class="payback">Se uma resposta rápida salvar uma única venda, o curso já se pagou.</p>
       <ul class="incl">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>24 aulas curtas, no celular ou no computador</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Ficha do Negócio, 100 pedidos prontos e planilha de vendas</li>
@@ -484,7 +527,7 @@ fbq('track','ViewContent',{content_name:'IA para o seu Negocio',content_ids:['88
   document.querySelectorAll('.rv,#shield').forEach(function(el){ reduce ? el.classList.add('in') : io.observe(el); });
 
   /* conversa do hero */
-  var chat = document.getElementById('chat');
+  var chat = document.getElementById('chat') || document.createElement('div');
   var seq = Array.prototype.slice.call(chat.querySelectorAll('.msg,.typing'));
   function play(){
     if(reduce){ seq.forEach(function(n){ if(n.classList.contains('msg')) n.classList.add('in'); }); return; }

@@ -318,6 +318,27 @@ footer a{color:var(--ink)}
 .poster .t span{display:inline-block;margin-top:10px;background:#ffd43b;color:#16161c;font-weight:900;font-size:14px;border-radius:8px;padding:5px 10px}
 .vid-frame{max-width:300px;border-radius:14px;overflow:hidden;aspect-ratio:9/14;background:#000}
 .vid-frame video{width:100%;height:100%;object-fit:cover;display:block}
+
+/* antes e depois chamativo */
+.ab-sec{padding:clamp(56px,10vw,110px) 0;text-align:center;background:radial-gradient(60% 50% at 50% 40%,#f2554a26,transparent 70%)}
+.ab-sec h2{margin:12px auto 0;max-width:16ch}
+.ab-wrap{position:relative;width:min(460px,100%);margin:34px auto 0;padding:5px;border-radius:30px;background:conic-gradient(from var(--a,0deg),#f2554a,#ffd43b,#2dd4bf,#f2554a);animation:spin 5s linear infinite;box-shadow:0 30px 80px -30px #f2554acc}
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes spin{to{--a:360deg}}
+.ab{position:relative;aspect-ratio:4/5;border-radius:26px;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;background:#000}
+.ab img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ab .af{clip-path:inset(0 0 0 var(--p,50%))}
+.ab .line{position:absolute;top:0;bottom:0;left:var(--p,50%);width:4px;margin-left:-2px;background:#fff;box-shadow:0 0 22px 4px #ffd43bcc}
+.ab .knob{position:absolute;top:50%;left:var(--p,50%);width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:#fff;color:#16161c;display:grid;place-items:center;font:900 20px/1 "Montserrat";box-shadow:0 10px 30px -6px #000a}
+.ab .tg{position:absolute;top:14px;font:800 12px/1 "Montserrat";letter-spacing:.12em;text-transform:uppercase;padding:9px 12px;border-radius:999px;color:#fff;transition:opacity .3s}
+.ab .tg.l{left:14px;background:#e11d48e6} .ab .tg.r{right:14px;background:#0f9f7ae6}
+.ab .rx{position:absolute;bottom:14px;display:flex;align-items:center;gap:6px;font:800 14px/1 "Montserrat";padding:10px 12px;border-radius:14px;background:#000a;color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ab .rx.l{left:14px} .ab .rx.r{right:14px}
+.ab .sp{position:absolute;font-size:22px;pointer-events:none;animation:tw 1.8s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(20deg)}}
+.ab-hint{margin-top:16px;color:var(--muted);font-size:14px}
+.ab-cta{margin-top:26px}
+@media (prefers-reduced-motion:reduce){.ab-wrap{animation:none}.ab .sp{animation:none;opacity:.8}}
 </style>
 <!-- Meta Pixel: IA NO SEU TEMPO -->
 <script>
@@ -364,7 +385,7 @@ fbq('track','ViewContent',{content_name:'Videos e Imagens com IA',content_ids:['
           <div class="notch"></div>
           <div class="ed-h"><span class="lg">✦</span>Editor IA<span class="st" id="st">pronto</span></div>
           <div class="shot" id="shot">
-            <img class="bef" src="img/vela.webp" alt="">
+            <img class="bef" src="img/antes.webp" alt="" style="filter:none;transform:none">
             <img class="aft" id="aft" src="img/vela.webp" alt="">
             <span class="glow"></span><span class="scan" id="scan"></span>
             <span class="lbl" id="lbl">Antes</span><span class="vbadge" id="vb">▶ vídeo · 0:05</span>
@@ -376,6 +397,27 @@ fbq('track','ViewContent',{content_name:'Videos e Imagens com IA',content_ids:['
         <span class="vis-tag">Ilustração</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ANTES E DEPOIS -->
+<section class="ab-sec" id="antes-depois">
+  <div class="wrap">
+    <p class="kicker rv">Arrasta e vê com seus olhos</p>
+    <h2 class="rv d1">Foto de celular <span class="serif c-coral">vs.</span> foto feita <span class="serif c-yellow">com IA</span></h2>
+    <div class="ab-wrap rv d2">
+      <div class="ab" id="ab" role="slider" tabindex="0" aria-label="Comparar antes e depois" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+        <img src="img/antes.webp" alt="Antes: foto escura e bagunçada tirada no celular" width="600" height="750">
+        <img class="af" src="img/depois.webp" alt="Depois: foto de produto com cara de estúdio, feita com IA" width="752" height="940">
+        <span class="sp" style="left:70%;top:18%">✨</span><span class="sp" style="left:86%;top:46%;animation-delay:.6s">✨</span><span class="sp" style="left:62%;top:70%;animation-delay:1.1s">⭐</span>
+        <span class="tg l">Antes</span><span class="tg r">Depois</span>
+        <span class="rx l">😕 3 curtidas</span><span class="rx r">😍 1.284 curtidas</span>
+        <span class="line"></span><span class="knob" aria-hidden="true">⇆</span>
+      </div>
+    </div>
+    <p class="ab-hint rv">👆 Arraste para os lados. A foto da esquerda foi tirada no celular, a da direita foi feita com IA. Ilustração.</p>
+    <div class="ab-cta rv"><a class="btn buy" href="https://pay.hotmart.com/E108266583D?checkoutMode=10" data-pos="antes-depois">Quero fazer isso no meu celular
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
 
@@ -428,7 +470,7 @@ fbq('track','ViewContent',{content_name:'Videos e Imagens com IA',content_ids:['
 
     <div class="demo panel-anim" role="tabpanel" id="p1" aria-labelledby="t1">
       <div class="card"><h3>Você pede</h3><p class="ask">"Melhora essa foto da minha vela: luz suave de janela, fundo claro e limpo, com cara de foto de catálogo."</p><span class="tag">Você manda a foto do celular e escreve, ou fala.</span></div>
-      <div class="card dark"><h3>A IA entrega</h3><div class="mini"><figure><img class="bef" src="img/vela.webp" alt="Foto escura antes" loading="lazy"><figcaption>Antes</figcaption></figure><figure><img src="img/vela.webp" alt="Foto bonita depois" loading="lazy"><figcaption>Depois</figcaption></figure></div></div>
+      <div class="card dark"><h3>A IA entrega</h3><div class="mini"><figure><img src="img/antes.webp" alt="Foto escura antes" loading="lazy"><figcaption>Antes</figcaption></figure><figure><img src="img/depois.webp" alt="Foto bonita depois" loading="lazy"><figcaption>Depois</figcaption></figure></div></div>
     </div>
     <div class="demo panel-anim" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
       <div class="card"><h3>Você pede</h3><p class="ask">"Cria uma arte de Dia das Mães para minha loja de velas, em tons de rosa, com espaço para escrever 20% OFF."</p><span class="tag">Serve para post, story, cardápio e promoção.</span></div>
@@ -665,6 +707,24 @@ fbq('track','ViewContent',{content_name:'Videos e Imagens com IA',content_ids:['
 
   /* vídeo de exemplo só toca quando a aba aparece */
   (function(){var v=document.getElementById('demoVid');var t=document.getElementById('t3');if(!v||!t)return;t.addEventListener('click',function(){try{v.preload='auto';v.play();}catch(e){}});})();
+
+  /* antes e depois: arrastar + varredura automática */
+  (function(){
+    var ab=document.getElementById('ab'); if(!ab) return;
+    var user=false, dragging=false;
+    function set(p){p=Math.max(0,Math.min(100,p));ab.style.setProperty('--p',p+'%');ab.setAttribute('aria-valuenow',Math.round(p));}
+    function fromX(x){var r=ab.getBoundingClientRect();set((x-r.left)/r.width*100);}
+    ab.addEventListener('pointerdown',function(e){user=true;dragging=true;ab.setPointerCapture(e.pointerId);fromX(e.clientX);});
+    ab.addEventListener('pointermove',function(e){if(dragging)fromX(e.clientX);});
+    ab.addEventListener('pointerup',function(){dragging=false;});
+    ab.addEventListener('keydown',function(e){var v=+ab.getAttribute('aria-valuenow');if(e.key==='ArrowLeft'){user=true;set(v-5);e.preventDefault();}if(e.key==='ArrowRight'){user=true;set(v+5);e.preventDefault();}});
+    if(reduce){set(50);return;}
+    var t0=null, seen=false;
+    new IntersectionObserver(function(es){seen=es[0].isIntersecting;},{threshold:.3}).observe(ab);
+    function loop(t){ if(!user){ if(t0===null)t0=t; if(seen){ var k=((t-t0)/1000)%5; var p=k<2.5? 85-70*ease(k/2.5) : 15+70*ease((k-2.5)/2.5); set(p);} requestAnimationFrame(loop);} }
+    function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;}
+    requestAnimationFrame(loop);
+  })();
 
   /* abas */
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[role=tab]'));

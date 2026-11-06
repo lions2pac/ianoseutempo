@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IA no seu tempo</title>
+<script>
+(function(){
+  var p = location.pathname, q = location.search, h = location.hash;
+  var base = '/ianoseutempo/';
+  var dest = /\/negocio\//i.test(p) ? base + 'negocio/' : base;
+  // link do anúncio com URL duplicada: pega o src do anúncio (último src) e mantém fbclid/utm
+  try {
+    var qs = new URLSearchParams(q), all = qs.getAll('src'), out = new URLSearchParams();
+    qs.forEach(function(v,k){ if(k !== 'src') out.append(k, v); });
+    if (all.length) out.set('src', all[all.length - 1]);
+    q = out.toString() ? '?' + out.toString() : '';
+  } catch(e) {}
+  location.replace(dest + q + h);
+})();
+</script>
+</head><body style="font-family:system-ui;background:#0d0d12;color:#f4f2ee;display:grid;place-items:center;min-height:100vh;margin:0">
+<p>Carregando… <a style="color:#ff7a70" href="/ianoseutempo/negocio/">Abrir a página</a></p>
+</body></html>

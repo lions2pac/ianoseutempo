@@ -228,11 +228,40 @@ footer a{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.rv,.msg{opacity:1;transform:none;transition:none}.typing i{animation:none}}
 @media (pointer:coarse){.btn{min-height:52px;display:inline-flex;align-items:center;justify-content:center}}
 
-.hero-img{justify-self:center;width:min(380px,100%);border-radius:28px;overflow:hidden;box-shadow:0 30px 80px -20px #000c;border:1px solid var(--line)}
-.hero-img img{width:100%;height:auto}
+.hero-vis{position:relative;justify-self:center;width:min(440px,100%);aspect-ratio:440/560}
+.hero-photo{position:absolute;right:0;top:0;width:68%;aspect-ratio:4/5;height:auto;object-fit:cover;object-position:50% 45%;border-radius:26px;transform:rotate(3deg);box-shadow:0 30px 70px -24px #000c;border:1px solid var(--line)}
+.phone{position:absolute;left:0;bottom:0;width:58%;aspect-ratio:9/18.5;background:#0b0b10;border-radius:36px;padding:9px;box-shadow:0 40px 80px -20px #000e,0 0 0 2px #3a3a48 inset;transform:rotate(-4deg);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:rotate(-4deg) translateY(-8px)}}
+.scr{position:relative;height:100%;border-radius:28px;overflow:hidden;background:linear-gradient(180deg,#f7f4ee,#efe9df);color:#16161c;font-size:11px;line-height:1.3}
+.scr .notch{position:absolute;top:6px;left:50%;width:34%;height:16px;margin-left:-17%;background:#0b0b10;border-radius:10px;z-index:3}
+.scr .sb{display:flex;justify-content:space-between;padding:8px 16px 0;font-weight:800;font-size:10px}
+.app-h{padding:16px 14px 8px}
+.app-h small{display:block;color:#6b6874;font-weight:600;font-size:10px}
+.app-h .tot{font-size:24px;font-weight:900;letter-spacing:-.02em;font-variant-numeric:tabular-nums;transition:transform .25s}
+.app-h .tot.bump{transform:scale(1.08);color:#0f9f7a}
+.app-h .cnt{display:inline-block;margin-top:3px;background:#2dd4bf2e;color:#0b7a63;border-radius:20px;padding:2px 8px;font-weight:800;font-size:9.5px}
+.bars{display:flex;align-items:flex-end;gap:4px;height:34px;padding:0 14px 8px}
+.bars i{flex:1;background:linear-gradient(#2dd4bf,#0f9f7a);border-radius:3px 3px 1px 1px;height:var(--h,10%);transition:height .6s cubic-bezier(.2,.9,.3,1.3)}
+.feed{position:relative;padding:0 10px;display:flex;flex-direction:column;gap:7px}
+.sale{display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px;padding:8px 9px;box-shadow:0 6px 16px -8px #0004;border:1px solid #16161c10;animation:drop .7s cubic-bezier(.2,1.4,.4,1) both}
+.sale .ic{flex:none;width:26px;height:26px;border-radius:9px;display:grid;place-items:center;background:#16a34a;color:#fff;font-size:14px;font-weight:900}
+.sale b{display:block;font-size:10.5px}
+.sale span{color:#6b6874;font-size:9.5px}
+.sale em{margin-left:auto;font-style:normal;font-weight:900;color:#0f9f7a;font-size:11px;white-space:nowrap}
+.sale.out{animation:fadeout .5s forwards}
+@keyframes drop{0%{opacity:0;transform:translateY(-70px) scale(.9)}60%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes fadeout{to{opacity:0;transform:translateY(16px) scale(.96)}}
+.push{position:absolute;left:8px;right:8px;top:8px;z-index:4;display:flex;gap:8px;align-items:center;background:#1c1c26f2;color:#fff;border-radius:16px;padding:9px 10px;font-size:10px;transform:translateY(-130%);transition:transform .45s cubic-bezier(.2,1.3,.4,1)}
+.push.on{transform:none}
+.push .ic{width:24px;height:24px;border-radius:7px;background:#16a34a;display:grid;place-items:center;font-weight:900}
+.coin{position:absolute;z-index:5;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6c2,#ffd43b 45%,#d99a00);box-shadow:0 0 0 1px #b07a0033;pointer-events:none;animation:coin 1.3s cubic-bezier(.3,.6,.5,1) forwards}
+@keyframes coin{0%{opacity:0;transform:translate(0,-40px) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(360deg) scale(1)}}
+.vis-tag{position:absolute;right:4px;bottom:-22px;font-size:11px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.phone{animation:none}.sale{animation:none}}
 .pain{display:grid;gap:36px;align-items:center}
 @media (min-width:900px){.pain{grid-template-columns:.9fr 1.1fr}}
-.pain img,.shift img,.box-img{width:100%;max-width:420px;justify-self:center;border-radius:24px;box-shadow:0 24px 60px -24px #0009}
+.pain img,.shift img,.box-img{width:100%;max-width:380px;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 50%;justify-self:center;border-radius:24px;box-shadow:0 24px 60px -24px #0009}
+.box-img{aspect-ratio:1/1;object-position:50% 52%}
 .pains{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px}
 .pains li{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;font-weight:600}
 .pains li b{color:var(--coral-ink);font-size:20px;line-height:1.3}
@@ -285,7 +314,18 @@ fbq('track','ViewContent',{content_name:'IA para o seu Negocio',content_ids:['88
     </div>
 
     <div class="rv d2">
-      <div class="hero-img"><img src="img/c4.webp" width="752" height="1344" alt="Dona de confeitaria comemorando uma venda aprovada no celular"></div>
+      <div class="hero-vis">
+        <img class="hero-photo" src="img/c4.webp" width="752" height="1344" alt="Dona de confeitaria comemorando uma venda no celular">
+        <div class="phone" aria-hidden="true"><div class="scr" id="app">
+          <div class="notch"></div>
+          <div class="sb"><span>9:41</span><span>5G ▮</span></div>
+          <div class="push" id="push"><span class="ic">✓</span><div><b>Pedido confirmado no WhatsApp</b><br><span id="pushTxt">+ R$ 36,00</span></div></div>
+          <div class="app-h"><small>Confeitaria da Lu · vendas de hoje</small><div class="tot" id="tot">R$ 0,00</div><span class="cnt" id="cnt">0 pedidos</span></div>
+          <div class="bars" id="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="feed" id="feed"></div>
+        </div></div>
+        <span class="vis-tag">Ilustração</span>
+      </div>
     </div>
   </div>
 </section>
@@ -542,6 +582,35 @@ fbq('track','ViewContent',{content_name:'IA para o seu Negocio',content_ids:['88
     });
   }
   play();
+
+
+  /* vendas caindo no app */
+  (function(){
+    var feed=document.getElementById('feed'); if(!feed) return;
+    var tot=document.getElementById('tot'), cnt=document.getElementById('cnt'), push=document.getElementById('push'), pushTxt=document.getElementById('pushTxt'), app=document.getElementById('app');
+    var bars=[].slice.call(document.querySelectorAll('#bars i'));
+    var items=[['Bolo de pote x3','WhatsApp · Pix',36],['Torta de limão','Instagram · cartão',89],['Kit festa 50 doces','WhatsApp · Pix',120],['Brownie x6','Respondido pela IA',42],['Bolo de aniversário','Instagram · Pix',150],['Cento de brigadeiro','WhatsApp · cartão',95],['Cookies x4','Respondido pela IA',28]];
+    var sum=0, n=0, i=0;
+    function brl(v){return 'R$ '+v.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
+    bars.forEach(function(b,k){b.style.setProperty('--h',(12+k*4)+'%');});
+    function coins(){ if(reduce) return; for(var c=0;c<7;c++){ var e=document.createElement('i'); e.className='coin'; e.style.left=(40+Math.random()*20)+'%'; e.style.top='34%'; e.style.setProperty('--dx',(Math.random()*120-60)+'px'); e.style.setProperty('--dy',(60+Math.random()*120)+'px'); e.style.animationDelay=(c*40)+'ms'; app.appendChild(e); setTimeout(function(x){return function(){x.remove();};}(e),1500);} }
+    function count(from,to){ var t0=performance.now(); function f(t){ var p=Math.min(1,(t-t0)/700); tot.textContent=brl(from+(to-from)*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(f);} reduce?tot.textContent=brl(to):requestAnimationFrame(f); }
+    function add(){
+      var it=items[i++%items.length], prev=sum; sum+=it[2]; n++;
+      var d=document.createElement('div'); d.className='sale';
+      d.innerHTML='<span class="ic">✓</span><div><b>'+it[0]+'</b><span>'+it[1]+' · agora</span></div><em>+'+brl(it[2])+'</em>';
+      feed.insertBefore(d,feed.firstChild);
+      var all=feed.querySelectorAll('.sale'); if(all.length>4){ var o=all[all.length-1]; o.classList.add('out'); setTimeout(function(){o.remove();},500); }
+      pushTxt.textContent='+ '+brl(it[2])+' · '+it[0]; push.classList.add('on'); setTimeout(function(){push.classList.remove('on');},1600);
+      count(prev,sum); tot.classList.add('bump'); setTimeout(function(){tot.classList.remove('bump');},300);
+      cnt.textContent=n+(n>1?' pedidos':' pedido');
+      var b=bars[(n-1)%bars.length]; b.style.setProperty('--h',Math.min(100,40+Math.random()*60)+'%');
+      coins();
+      if(n>=24){ sum=0; n=0; feed.innerHTML=''; }
+    }
+    if(reduce){ for(var k=0;k<3;k++) add(); return; }
+    setTimeout(function(){ add(); setInterval(function(){ if(!document.hidden) add(); },2200); },900);
+  })();
 
   /* abas */
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[role=tab]'));

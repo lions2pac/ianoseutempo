@@ -208,6 +208,10 @@ footer .wrap{display:grid;gap:10px}
 footer a{color:var(--ink)}
 
 /* barra fixa no celular */
+.cupom-bar{background:var(--yellow);color:#16161c;text-align:center;font-weight:800;font-size:14px;line-height:1.35;padding:10px 16px}
+.cupom-bar b{background:#16161c;color:var(--yellow);padding:2px 8px;border-radius:6px;white-space:nowrap}
+.big-price{flex-wrap:wrap}.big-price b,.big-price s,.price-inline strong{white-space:nowrap}
+.big-price s{color:var(--muted);font-size:20px;font-weight:600}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#0d0d12ee;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);
   display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .sticky.show{transform:none}
@@ -638,12 +642,31 @@ fbq('track','ViewContent',{content_name:'Videos e Imagens com IA',content_ids:['
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* cupom com prazo: VIDEO20, 20% ate 15/11/2026 23h59 (Brasilia). Depois some sozinho. */
+  var cupomOn = Date.now() < Date.parse('2026-11-16T02:59:00Z');
+  if(cupomOn){
+    var bar = document.createElement('div');
+    bar.className = 'cupom-bar';
+    bar.innerHTML = 'Só até domingo, 15/11: 20% de desconto com o cupom <b>VIDEO20</b>';
+    var top = document.querySelector('header.top');
+    top.parentNode.insertBefore(bar, top.nextSibling);
+    var pi = document.querySelector('.price-inline');
+    if(pi){ pi.innerHTML = '<strong>R$ 37,60</strong><span>de R$&nbsp;47,00, com o cupom VIDEO20</span>'; }
+    var bp = document.querySelector('.big-price');
+    if(bp){ bp.innerHTML = '<b>R$ 37,60</b><s>R$ 47,00</s>'; }
+    var inst = document.querySelector('.ticket .inst');
+    if(inst){ inst.innerHTML = 'ou 12x de R$&nbsp;3,89 no cartão, com o cupom <b>VIDEO20</b>. Ele já vai preenchido no pagamento, é só tocar em <b>Aplicar</b>. Vale até domingo, 15/11.'; }
+    var sb = document.querySelector('#sticky .p b');
+    if(sb){ sb.textContent = 'R$ 37,60'; }
+  }
+
   /* links de compra: origem + parâmetros do anúncio */
   var qs = new URLSearchParams(location.search);
   var keep = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
   document.querySelectorAll('a.buy').forEach(function(a){
     var u = new URL(a.href);
     u.searchParams.set('src', qs.get('src') || 'meta_vid_lp_v1');
+    if(cupomOn) u.searchParams.set('offDiscount','VIDEO20');
     keep.forEach(function(k){ if(qs.get(k)) u.searchParams.set(k, qs.get(k)); });
     a.href = u.toString();
     a.addEventListener('click', function(){

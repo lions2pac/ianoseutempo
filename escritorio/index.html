@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meu Escritório de Agentes com IA</title>
+<meta name="description" content="Curso para iniciantes: monte o seu escritório 3D de agentes com IA copiando prompts prontos. 29 aulas curtas, R$ 97 em até 12x, 7 dias de garantia.">
+<meta name="theme-color" content="#0d1220">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meu Escritório de Agentes com IA">
+<meta property="og:description" content="Monte o seu escritório 3D de agentes com IA, sem escrever código. 29 aulas curtas com prompts prontos.">
+<meta property="og:url" content="https://lions2pac.github.io/ianoseutempo/escritorio/">
+<meta property="og:image" content="https://lions2pac.github.io/ianoseutempo/escritorio/assets/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1220; --bg2:#141b2d; --card:#1a2236; --line:#2a3550;
+  --ink:#f3efe6; --soft:#b7bfd0; --mute:#8590a8;
+  --amber:#f6c445; --coral:#ff6b5b; --mint:#34d399; --mint-ink:#062a1c;
+  --paper:#f4efe4; --paper-ink:#1b1f2a; --paper-soft:#545b6b; --paper-line:#ddd5c4;
+  --r:18px; --max:1120px;
+  --serif:"Instrument Serif", Georgia, serif;
+  --sans:"Archivo", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--sans);overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.eyebrow{font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{margin:0;font-family:var(--sans);font-weight:800;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(30px,6.4vw,50px)}
+h2 em,h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;color:var(--coral)}
+p{margin:0}
+section{padding:72px 0}
+.lead{color:var(--soft);font-size:clamp(17px,2.2vw,20px);max-width:620px}
+
+/* botão */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:16px 28px;border-radius:14px;
+  background:var(--mint);color:var(--mint-ink);font:800 18px/1.1 var(--sans);text-decoration:none;border:0;cursor:pointer;
+  box-shadow:0 10px 30px -10px rgba(52,211,153,.6),inset 0 -3px 0 rgba(0,0,0,.15);transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px -12px rgba(52,211,153,.75),inset 0 -3px 0 rgba(0,0,0,.15)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:20px;height:20px}
+.btn.block{width:100%}
+.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none;font-weight:700;font-size:16px;min-height:48px;padding:12px 20px}
+.ghost:hover{box-shadow:none;border-color:var(--soft)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;color:var(--soft);font-size:14px}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust svg{width:16px;height:16px;color:var(--mint);flex:none}
+
+/* topo */
+.top{position:sticky;top:0;z-index:30;background:rgba(13,18,32,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,53,80,.6)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font:800 15px/1.1 var(--sans);text-decoration:none}
+.brand i{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--amber),var(--coral));display:grid;place-items:center;font:700 13px var(--mono);font-style:normal;color:#1b1f2a}
+.top .btn{min-height:40px;padding:9px 16px;font-size:14px;border-radius:10px;box-shadow:none}
+
+/* hero */
+.hero{padding:34px 0 56px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-20% -10% auto;height:620px;background:radial-gradient(60% 50% at 70% 30%,rgba(246,196,69,.16),transparent 70%),radial-gradient(50% 50% at 15% 10%,rgba(255,107,91,.12),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;gap:26px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:99px;background:rgba(246,196,69,.1);border:1px solid rgba(246,196,69,.3);color:var(--amber);font:700 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;width:max-content;max-width:100%}
+.pill b{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(255,107,91,.2);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(255,107,91,0)}}
+.hero h1{font-size:clamp(38px,9vw,74px);margin-top:16px}
+.hero h1 em{display:inline}
+.hero .lead{margin-top:16px}
+.hero-cta{margin-top:24px}
+.screen{position:relative;border-radius:16px;overflow:hidden;background:#0a0f1a;border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 6px rgba(255,255,255,.03)}
+.screen .bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;background:#111829;border-bottom:1px solid var(--line)}
+.screen .bar i{width:9px;height:9px;border-radius:50%;background:#2c3753}
+.screen .bar i:nth-child(1){background:#ff6b5b}.screen .bar i:nth-child(2){background:#f6c445}.screen .bar i:nth-child(3){background:#34d399}
+.screen .bar span{margin-left:10px;font:500 11px var(--mono);color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screen video,.screen img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#0a0f1a}
+.cap{margin-top:10px;font:500 12px/1.4 var(--mono);color:var(--mute)}
+@media(min-width:900px){
+  .hero{padding:64px 0 80px}
+  .hero .wrap{grid-template-columns:1fr 1.08fr;align-items:center;gap:48px}
+}
+
+/* faixa do vídeo */
+.seen{background:var(--amber);color:#1b1f2a;padding:22px 0}
+.seen p{font:700 clamp(17px,2.4vw,21px)/1.35 var(--sans);text-align:center}
+.seen em{font-family:var(--serif);font-weight:400;font-size:1.15em}
+
+/* demo prompt */
+.paper{background:var(--paper);color:var(--paper-ink)}
+.paper .eyebrow{color:#b5521f}
+.paper h2 em{color:#d2462f}
+.paper .lead{color:var(--paper-soft)}
+.demo{display:grid;gap:18px;margin-top:34px}
+@media(min-width:900px){.demo{grid-template-columns:1fr 1.1fr;align-items:stretch}}
+.prompt{background:#fff;border:1px solid var(--paper-line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 40px -28px rgba(27,31,42,.35)}
+.prompt .tag{display:flex;align-items:center;justify-content:space-between;font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--paper-soft)}
+.prompt .tag b{background:var(--amber);color:#1b1f2a;padding:5px 9px;border-radius:7px}
+.prompt blockquote{margin:0;font:500 16px/1.6 var(--mono);color:#2b3140}
+.prompt blockquote mark{background:rgba(246,196,69,.35);color:inherit;border-radius:3px;padding:0 2px}
+.prompt .btn{align-self:flex-start}
+.result{position:relative;border-radius:var(--r);overflow:hidden;background:#2a2622;min-height:240px;border:1px solid var(--paper-line)}
+.result img{width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .7s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.result.on img{opacity:1;transform:none}
+.result .wait{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#d9d2c3;font:500 14px/1.5 var(--mono);padding:20px;transition:opacity .4s}
+.result.on .wait{opacity:0;pointer-events:none}
+.dots{display:inline-flex;gap:6px;margin-bottom:10px}
+.dots i{width:8px;height:8px;border-radius:50%;background:#d9d2c3;opacity:.3}
+.result.busy .dots i{animation:dot 1s infinite}
+.result.busy .dots i:nth-child(2){animation-delay:.15s}.result.busy .dots i:nth-child(3){animation-delay:.3s}
+@keyframes dot{40%{opacity:1;transform:translateY(-4px)}}
+.done{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(13,18,32,.88);color:#fff;border-radius:12px;padding:12px 14px;font-size:14px;display:flex;gap:10px;align-items:flex-start;opacity:0;transform:translateY(8px);transition:.5s .5s}
+.result.on .done{opacity:1;transform:none}
+.done svg{width:20px;height:20px;color:var(--mint);flex:none;margin-top:1px}
+.again{margin-top:14px;font:600 14px var(--sans);color:var(--paper-soft);background:none;border:0;text-decoration:underline;cursor:pointer;padding:6px 0;visibility:hidden}
+.again.show{visibility:visible}
+
+/* o que você monta */
+.grid{display:grid;gap:18px;margin-top:36px}
+@media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.card figure{margin:0;aspect-ratio:16/10;overflow:hidden;background:#0a0f1a;position:relative}
+.card figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover figure img{transform:scale(1.04)}
+.card figure small{position:absolute;right:10px;bottom:10px;background:rgba(13,18,32,.8);color:var(--soft);font:500 10px var(--mono);padding:4px 7px;border-radius:6px}
+.card .in{padding:18px 20px 22px}
+.card .n{font:700 11px var(--mono);color:var(--amber);letter-spacing:.1em}
+.card h3{font-size:21px;margin:8px 0 6px}
+.card p{color:var(--soft);font-size:15.5px}
+.term{aspect-ratio:16/10;background:#070b13;padding:18px;font:500 12.5px/1.75 var(--mono);color:#9fb0cc;overflow:hidden}
+.term .g{color:var(--mint)}.term .y{color:var(--amber)}.term .c{color:#5d6b88}
+
+/* passos */
+.steps{display:grid;gap:14px;margin-top:34px;counter-reset:s}
+@media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{padding:24px;border-radius:var(--r);background:var(--bg2);border:1px solid var(--line);position:relative}
+.step:before{counter-increment:s;content:counter(s);font:400 64px/1 var(--serif);font-style:italic;color:var(--coral);display:block;margin-bottom:8px}
+.step h3{font-size:20px;margin-bottom:6px}
+.step p{color:var(--soft);font-size:15.5px}
+
+/* conteúdo */
+.mods{margin-top:34px;display:grid;gap:12px}
+details{color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:20px 22px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary .num{font:400 40px/1 var(--serif);font-style:italic;color:var(--amber);width:34px}
+summary h3{font-size:18px}
+summary span{display:block;color:var(--mute);font:500 12px var(--mono);margin-top:4px}
+summary svg{width:22px;height:22px;color:var(--soft);transition:transform .3s}
+details[open] summary svg{transform:rotate(45deg)}
+details ol{margin:0;padding:0 22px 20px 70px;color:var(--soft);font-size:15.5px}
+details li{padding:5px 0;border-top:1px dashed rgba(42,53,80,.8)}
+details li:first-child{border-top:0}
+.note{margin-top:14px;color:var(--mute);font-size:14px}
+
+/* para quem */
+.who{display:grid;gap:16px;margin-top:34px}
+@media(min-width:860px){.who{grid-template-columns:1fr 1fr}}
+.who > div{border-radius:var(--r);padding:26px;border:1px solid var(--paper-line);background:#fff}
+.who h3{font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.who ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.who li{display:flex;gap:10px;font-size:16px;color:#2b3140}
+.who li svg{width:20px;height:20px;flex:none;margin-top:2px}
+.yes svg{color:#14935f}.no svg{color:#d2462f}
+
+/* oferta */
+.offer{position:relative;overflow:hidden}
+.offer:before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 0%,rgba(52,211,153,.12),transparent 70%);pointer-events:none}
+.box{position:relative;max-width:620px;margin:34px auto 0;background:linear-gradient(180deg,#1d2740,#151c2e);border:1px solid #33416a;border-radius:24px;padding:28px 22px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+@media(min-width:600px){.box{padding:36px}}
+.stack{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:12px}
+.stack li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px}
+.stack li svg{width:22px;height:22px;color:var(--mint);flex:none;margin-top:1px}
+.stack li small{display:block;color:var(--mute);font-size:14px}
+.price{border-top:1px dashed #33416a;padding-top:22px;text-align:center}
+.price .lbl{font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.price .val{font:800 clamp(52px,13vw,68px)/1 var(--sans);letter-spacing:-.03em;margin:8px 0 4px}
+.price .val sup{font-size:.38em;vertical-align:.95em;margin-right:4px;font-weight:700}
+.price .inst{color:var(--soft);margin-bottom:20px}
+.guar{display:flex;gap:14px;align-items:center;margin-top:22px;padding:16px;border-radius:14px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.25);text-align:left}
+.guar .seal{width:58px;height:58px;flex:none;border-radius:50%;border:2px dashed var(--mint);display:grid;place-items:center;color:var(--mint);font:800 20px/1 var(--sans);text-align:center}
+.guar .seal small{display:block;font:700 8px var(--mono);letter-spacing:.06em}
+.guar p{font-size:14.5px;color:var(--soft)}
+.guar b{color:var(--ink)}
+.secure{margin-top:14px;text-align:center;color:var(--mute);font-size:13px;display:flex;justify-content:center;gap:6px;align-items:center}
+.secure svg{width:14px;height:14px}
+
+/* aviso */
+.warn{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.warnbox{display:grid;gap:18px;border-left:4px solid var(--coral);padding:4px 0 4px 20px;max-width:780px}
+.warnbox h2{font-size:clamp(26px,5vw,38px)}
+.warnbox p{color:var(--soft)}
+.warnbox ul{margin:0;padding-left:20px;color:var(--soft);display:grid;gap:6px}
+
+/* faq */
+.faq{margin-top:30px;display:grid;gap:10px;max-width:820px}
+.faq details summary{grid-template-columns:1fr auto;padding:18px 20px}
+.faq details summary h3{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.35}
+.faq details p{padding:0 20px 20px;color:var(--soft);font-size:15.5px}
+
+/* final */
+.final{text-align:center;padding:84px 0 110px}
+.final h2{max-width:760px;margin:0 auto}
+.final .lead{margin:16px auto 28px}
+footer{border-top:1px solid var(--line);padding:28px 0 120px;color:var(--mute);font-size:13px}
+footer p+p{margin-top:8px}
+@media(min-width:860px){footer{padding-bottom:40px}}
+
+/* barra fixa celular */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(13,18,32,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.sticky.show{transform:none}
+.sticky .p{font:800 18px/1.1 var(--sans);white-space:nowrap}
+.sticky .p small{display:block;font:500 11px var(--mono);color:var(--mute);margin-top:3px}
+.sticky .btn{flex:1;min-height:50px;font-size:16px;padding:12px 16px}
+@media(min-width:860px){.sticky{display:none}}
+
+/* aviso de pré-visualização */
+.toast{position:fixed;left:50%;top:76px;transform:translate(-50%,-20px);opacity:0;z-index:60;background:var(--amber);color:#1b1f2a;font:700 14px/1.4 var(--sans);padding:12px 16px;border-radius:12px;max-width:calc(100% - 32px);text-align:center;transition:.3s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* entradas */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .pill b,.result.busy .dots i{animation:none}
+  .card figure img,.btn{transition:none}
+}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1372561524757221');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'Meu Escritório de Agentes com IA',content_type:'product',value:97,currency:'BRL'});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1372561524757221&ev=PageView&noscript=1"></noscript>
+</head>
+<body>
+
+<!-- ============================================================
+     LINK DO CHECKOUT DA HOTMART: troque só esta linha.
+     Exemplo: const CHECKOUT = "https://pay.hotmart.com/X12345678Y";
+     Enquanto estiver vazio, os botões levam até a oferta.
+     ============================================================ -->
+<script>const CHECKOUT = "";</script>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#topo"><i>3D</i>Meu Escritório de Agentes</a>
+    <a class="btn" href="#oferta" data-buy>Quero o curso</a>
+  </div>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><b></b>Curso online para iniciantes</span>
+      <h1>Monte o seu escritório 3D de agentes com IA, <em>sem escrever código.</em></h1>
+      <p class="lead">Você copia o prompt da aula, cola no Claude e vê o escritório aparecer. São 29 aulas curtas, do primeiro boneco na mesa até robôs de trade rodando em simulação.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#oferta" data-buy>Quero montar o meu
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>R$ 97 ou até 12x</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>7 dias de garantia</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Acesso pela Hotmart</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="screen">
+        <div class="bar"><i></i><i></i><i></i><span>meu-escritorio.html</span></div>
+        <video id="heroVid" muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-label="Passeio pelo escritório 3D montado no curso">
+        </video>
+      </div>
+      <p class="cap">Cenas da aula 1.1: o escritório que você monta, aberto no navegador.</p>
+    </div>
+  </div>
+</section>
+
+<div class="seen"><div class="wrap"><p>Viu o escritório no vídeo? <em>Aqui você monta o seu,</em> aula por aula.</p></div></div>
+
+<section class="paper" id="como">
+  <div class="wrap">
+    <span class="eyebrow">Teste uma aula agora</span>
+    <h2 style="margin-top:12px">Um prompt. <em>Uma sala pronta.</em></h2>
+    <p class="lead" style="margin-top:14px">Este é o prompt da aula 1.3, igual ao que vem no kit. Toque no botão e veja o que ele vira.</p>
+    <div class="demo">
+      <div class="prompt rv">
+        <div class="tag"><span>Prompt da aula 1.3</span><b>copiar e colar</b></div>
+        <blockquote>Usando a skill designer-escritorio-3d, crie uma página HTML única com three.js mostrando uma <mark>sala de escritório 3D</mark> com chão de madeira, mesa, cadeira e <mark>luz de fim de tarde</mark>. Coloque um <mark>boneco sentado digitando</mark>: pele morena, cabelo castanho espetado, camisa azul lisa. A câmera gira com o mouse.</blockquote>
+        <button class="btn" id="runDemo" type="button">Colar no Claude
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+      </div>
+      <div>
+        <div class="result rv" id="result" aria-live="polite">
+          <img src="assets/resultado.jpg" alt="Sala 3D com chão de madeira e um boneco sentado digitando no computador" loading="lazy">
+          <div class="wait"><div><div class="dots"><i></i><i></i><i></i></div><div id="waitTxt">O resultado aparece aqui</div></div></div>
+          <div class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Pronto quando:</b> a sala gira com o mouse e o boneco digita. Cada aula termina assim, com algo funcionando.</span></div>
+        </div>
+        <button class="again" id="again" type="button">Ver de novo</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="monta">
+  <div class="wrap">
+    <span class="eyebrow">O que você vai montar</span>
+    <h2 style="margin-top:12px">Um escritório que <em>trabalha</em> enquanto você olha.</h2>
+    <div class="grid">
+      <article class="card rv">
+        <figure><img src="assets/f-escritorio.jpg" alt="Vista de cima do escritório 3D com salas de vidro e mesas" loading="lazy"></figure>
+        <div class="in"><span class="n">PARTE 1</span><h3>O escritório 3D</h3><p>Diretoria, mesa de operações, salão de agentes, lounge e uma cidade em volta. Abre direto no navegador.</p></div>
+      </article>
+      <article class="card rv">
+        <figure><img src="assets/f-equipe.jpg" alt="Agente sentado na mesa e um cachorro golden andando pelo escritório" loading="lazy"></figure>
+        <div class="in"><span class="n">PARTE 1</span><h3>A equipe ganha vida</h3><p>O agente digita, cansa e vai descansar no sofá. O cachorro segue ele pelas portas.</p></div>
+      </article>
+      <article class="card rv">
+        <figure><img src="assets/f-teloes.jpg" alt="Três telões com gráfico, saldo e notícias" loading="lazy"><small>dados de exemplo</small></figure>
+        <div class="in"><span class="n">PARTE 1 E 2</span><h3>Telões com dados de verdade</h3><p>Gráfico, saldo e notícias lendo de um servidor seu, atualizados sozinhos.</p></div>
+      </article>
+      <article class="card rv">
+        <div class="term" aria-label="Terminal do servidor"><span class="c"># o seu servidor na nuvem</span><br><span class="g">✓</span> máquina criada no plano grátis<br><span class="g">✓</span> entrada só com chave<br><span class="g">✓</span> firewall ligado<br><span class="g">✓</span> folha de dados publicada<br><span class="y">→</span> atualizando a cada 2 min</div>
+        <div class="in"><span class="n">PARTE 2</span><h3>A casa dos seus agentes</h3><p>Um servidor no plano gratuito da Oracle, montado e protegido com comandos prontos para colar.</p></div>
+      </article>
+      <article class="card rv">
+        <figure><img src="assets/f-chat.jpg" alt="Escritório 3D com uma janela de chat aberta falando com o Claude" loading="lazy"></figure>
+        <div class="in"><span class="n">PARTE 2</span><h3>Chat com o gerente</h3><p>Você pergunta, o gerente lê os dados do escritório e responde ali mesmo.</p></div>
+      </article>
+      <article class="card rv">
+        <figure><img src="assets/f-placar.jpg" alt="Salão com vários robôs em mesas, cada um com o nome em cima" loading="lazy"></figure>
+        <div class="in"><span class="n">PARTE 3 E 4</span><h3>Robôs em simulação</h3><p>Robôs de código aberto treinando com preços reais, sem dinheiro, com placar no telão. E as travas, se um dia quiser ir além.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Como funciona</span>
+    <h2 style="margin-top:12px">Se você sabe copiar e colar, <em>você consegue.</em></h2>
+    <div class="steps">
+      <div class="step rv"><h3>Assiste a aula curta</h3><p>29 aulas, cerca de 1h05 no total. Cada uma mostra uma coisa só.</p></div>
+      <div class="step rv"><h3>Cola o prompt pronto</h3><p>Todos os prompts estão no kit. Você copia, cola no Claude e ele constrói.</p></div>
+      <div class="step rv"><h3>Confere o "pronto quando"</h3><p>Toda aula diz o que tem que aparecer na sua tela. Travou? Tem o prompt de ajuste ao lado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="paper" id="conteudo">
+  <div class="wrap">
+    <span class="eyebrow">O conteúdo</span>
+    <h2 style="margin-top:12px">29 aulas em <em>4 partes.</em></h2>
+    <div class="mods">
+      <details open>
+        <summary><span class="num">1</span><div><h3>O escritório 3D</h3><span>5 aulas</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <ol start="1"><li>Tour: o que é cada coisa</li><li>Instalar a skill de designer</li><li>A sala e o primeiro funcionário</li><li>Os ambientes e a vida no escritório</li><li>Telões, letreiro e cidade</li></ol>
+      </details>
+      <details>
+        <summary><span class="num">2</span><div><h3>O servidor, a casa dos seus agentes</h3><span>10 aulas</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <ol><li>O caminho dos dados</li><li>O Claude enxerga a sua tela (Chrome)</li><li>Criar a conta na Oracle Cloud</li><li>Criar a máquina</li><li>E se aparecer "sem capacidade"?</li><li>Entrar no servidor e deixar seguro</li><li>A vitrine: o servidor publica a folha</li><li>A gaveta: ligar a folha no escritório</li><li>O carteiro: atualização automática</li><li>O chat com o gerente</li></ol>
+      </details>
+      <details>
+        <summary><span class="num">3</span><div><h3>Os agentes em simulação</h3><span>8 aulas</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <ol><li>Aviso da Parte 3</li><li>O motor dos robôs</li><li>Por que simular</li><li>Os robôs que eu uso</li><li>A trava de segurança</li><li>Criar o seu robô</li><li>A agência</li><li>O placar no escritório</li></ol>
+      </details>
+      <details>
+        <summary><span class="num">4</span><div><h3>Dinheiro de verdade, com travas</h3><span>6 aulas · só para quem decidir</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <ol><li>Aviso da Parte 4</li><li>A lista de checagem</li><li>A chave da corretora</li><li>As travas</li><li>Ligar com valor pequeno</li><li>A rotina</li></ol>
+      </details>
+    </div>
+    <p class="note" style="color:var(--paper-soft)">A Parte 4 é opcional. O curso inteiro funciona em simulação, sem colocar dinheiro em lugar nenhum.</p>
+  </div>
+</section>
+
+<section class="paper" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Para quem é</span>
+    <h2 style="margin-top:12px">Feito para quem está <em>começando.</em></h2>
+    <div class="who">
+      <div class="yes rv">
+        <h3>É para você se</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Você quer aprender IA fazendo, não só assistindo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Nunca programou e quer ver algo seu funcionando</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tem curiosidade sobre robôs de trade e quer entender antes de arriscar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tem um computador e um pouco de paciência</li>
+        </ul>
+      </div>
+      <div class="no rv">
+        <h3>Não é para você se</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Procura sinal de compra e venda ou dica de investimento</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Quer um robô que promete lucro garantido</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Vai fazer tudo só pelo celular</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="oferta">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="eyebrow">Tudo o que vem no curso</span>
+      <h2 style="margin-top:12px">Comece hoje o <em>seu escritório.</em></h2>
+    </div>
+    <div class="box rv">
+      <ul class="stack">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div>29 videoaulas passo a passo<small>cerca de 1h05, em 4 partes</small></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div>Skill designer-escritorio-3d<small>ensina o seu Claude a desenhar escritórios 3D</small></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div>Escritório 3D pronto<small>para abrir, estudar e mudar do seu jeito</small></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div>Kit com todos os prompts<small>e os prompts de ajuste para quando travar</small></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div>7 dias de garantia<small>não gostou, pede o dinheiro de volta</small></div></li>
+      </ul>
+      <div class="price">
+        <div class="lbl">Pagamento único</div>
+        <div class="val"><sup>R$</sup>97</div>
+        <div class="inst">ou em até 12x no cartão</div>
+        <a class="btn block" href="#oferta" data-buy>Quero o curso agora
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pagamento seguro pela Hotmart.</div>
+      </div>
+      <div class="guar">
+        <div class="seal">7<small>DIAS</small></div>
+        <p><b>Garantia de 7 dias.</b> Assista, monte, teste. Se não for para você, pede o reembolso pela Hotmart dentro de 7 dias e recebe tudo de volta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="warn">
+  <div class="wrap">
+    <div class="warnbox">
+      <span class="eyebrow" style="color:var(--coral)">Combinado é combinado</span>
+      <h2>O que este curso <em>não</em> é.</h2>
+      <ul>
+        <li>Não é sinal, dica de investimento, consultoria nem gestão de dinheiro.</li>
+        <li>Não prometemos lucro. Trade tem risco e você pode perder dinheiro.</li>
+        <li>Os robôs mostrados são de código aberto, de outros autores, e você baixa do endereço original.</li>
+      </ul>
+      <p>O curso ensina a montar o escritório, o servidor e os agentes. O que você faz com eles é decisão sua.</p>
+    </div>
+  </div>
+</section>
+
+<section id="duvidas">
+  <div class="wrap">
+    <span class="eyebrow">Perguntas</span>
+    <h2 style="margin-top:12px">Ficou alguma <em>dúvida?</em></h2>
+    <div class="faq">
+      <details><summary><h3>Preciso saber programar?</h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Não. Você nunca escreve código. Copia o prompt da aula, o Claude faz, e quando tem comando, ele vem pronto numa linha só para colar.</p></details>
+      <details><summary><h3>O que eu preciso ter?</h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Um computador, uma conta no Claude e um cartão para a verificação da conta de servidor. A aula mostra cada passo.</p></details>
+      <details><summary><h3>Vou ter outros gastos?</h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>O servidor usa o plano Always Free da Oracle, que não cobra mensalidade. A Oracle pede um cartão para confirmar a conta e pode fazer uma cobrança pequena de teste, que volta. No Claude, algumas ferramentas usadas nas aulas, como skills e a extensão do Chrome, podem pedir um plano pago. Confira os planos em claude.ai antes de comprar.</p></details>
+      <details><summary><h3>E se a Oracle disser que não tem máquina livre?</h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Acontece. A aula 2.5 é só sobre isso: três saídas para conseguir a máquina e um alerta de gasto de R$ 1 para você dormir tranquilo.</p></details>
+      <details><summary><h3>Vou ganhar dinheiro com os robôs?</h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Não prometemos isso. O curso ensina a montar e testar os robôs em simulação. Trade tem risco, e a Parte 4, de dinheiro de verdade, é opcional e mostra as travas de proteção.</p></details>
+      <details><summary><h3>Dá para fazer pelo celular?</h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Assistir, sim. Montar, não: você vai precisar de um computador, Mac ou Windows.</p></details>
+      <details><summary><h3>Como recebo o acesso?</h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Logo depois do pagamento aprovado, a Hotmart manda o acesso para o seu e-mail. As aulas, a skill, o escritório pronto e o kit de prompts ficam na área do aluno.</p></details>
+      <details><summary><h3>E se eu não gostar?</h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Você tem 7 dias de garantia. Pede o reembolso pela Hotmart e recebe o valor de volta, sem precisar explicar.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>O seu escritório começa <em>com um prompt.</em></h2>
+    <p class="lead">29 aulas curtas, prompts prontos e 7 dias para testar sem risco.</p>
+    <a class="btn" href="#oferta" data-buy>Quero montar o meu
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Meu Escritório de Agentes com IA · curso online vendido pela Hotmart.</p>
+    <p>Conteúdo educativo. Não é recomendação de investimento e não há promessa de lucro. Trade tem risco. Cenas do escritório tiradas das aulas, com dados de exemplo.</p>
+    <p>© 2026 Meu Escritório de Agentes com IA. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky" aria-hidden="true">
+  <div class="p">R$ 97<small>ou até 12x</small></div>
+  <a class="btn" href="#oferta" data-buy tabindex="-1">Quero o curso</a>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  /* link de compra: leva junto os parâmetros de origem (utm, src, sck) para a Hotmart */
+  var q = location.search.replace(/^\?/, "");
+  function buyUrl(){
+    if(!CHECKOUT) return null;
+    if(!q) return CHECKOUT;
+    return CHECKOUT + (CHECKOUT.indexOf("?") > -1 ? "&" : "?") + q;
+  }
+  var url = buyUrl();
+  var toast = document.getElementById("toast"), tt;
+  document.querySelectorAll("[data-buy]").forEach(function(a){
+    a.addEventListener("click", function(){ try{ fbq('trackCustom','CliqueComprar',{posicao:'escritorio'}); }catch(e){} });
+    if(url){ a.href = url; a.rel = "noopener"; }
+    else a.addEventListener("click", function(){
+      if(a.closest(".box")){
+        toast.textContent = "Pré-visualização: o link de compra da Hotmart ainda vai ser ligado.";
+        toast.classList.add("show"); clearTimeout(tt);
+        tt = setTimeout(function(){ toast.classList.remove("show"); }, 3200);
+      }
+    });
+  });
+
+  /* vídeo do topo: só carrega se o visitante não pediu menos movimento nem economia de dados */
+  var v = document.getElementById("heroVid");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var save = navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ""));
+  if(!reduce && !save){
+    var s = document.createElement("source"); s.src = "assets/hero.mp4"; s.type = "video/mp4";
+    v.appendChild(s); v.load();
+    var p = v.play(); if(p && p.catch) p.catch(function(){});
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(e){
+        e.forEach(function(x){ if(x.isIntersecting){ var r = v.play(); if(r && r.catch) r.catch(function(){}); } else v.pause(); });
+      }).observe(v);
+    }
+  }
+
+  /* entradas */
+  var rv = document.querySelectorAll(".rv");
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(e){
+      e.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); } });
+    }, {rootMargin:"0px 0px -8% 0px"});
+    rv.forEach(function(el){ io.observe(el); });
+  } else rv.forEach(function(el){ el.classList.add("in"); });
+
+  /* demonstração do prompt */
+  var run = document.getElementById("runDemo"), res = document.getElementById("result"),
+      again = document.getElementById("again"), wt = document.getElementById("waitTxt");
+  var msgs = ["Lendo o prompt...", "Montando a sala...", "Colocando o boneco na cadeira..."];
+  function play(){
+    run.disabled = true; again.classList.remove("show");
+    res.classList.remove("on"); res.classList.add("busy");
+    var i = 0; wt.textContent = msgs[0];
+    var t = setInterval(function(){ i++; if(i < msgs.length) wt.textContent = msgs[i]; }, reduce ? 200 : 650);
+    setTimeout(function(){
+      clearInterval(t); res.classList.remove("busy"); res.classList.add("on");
+      run.disabled = false; again.classList.add("show");
+    }, reduce ? 400 : 2000);
+  }
+  run.addEventListener("click", play);
+  again.addEventListener("click", play);
+
+  /* barra fixa do celular: aparece depois do topo e some na oferta */
+  var bar = document.getElementById("sticky"), hero = document.querySelector(".hero"), offer = document.getElementById("oferta"),
+      heroOut = false, offerIn = false;
+  function upd(){ var s = heroOut && !offerIn; bar.classList.toggle("show", s); bar.setAttribute("aria-hidden", s ? "false" : "true");
+    bar.querySelector("a").tabIndex = s ? 0 : -1; }
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(e){ heroOut = !e[0].isIntersecting; upd(); }).observe(hero);
+    new IntersectionObserver(function(e){ offerIn = e[0].isIntersecting; upd(); }).observe(offer);
+  }
+})();
+</script>
+</body>
+</html>
